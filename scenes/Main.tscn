@@ -1,0 +1,185 @@
+[gd_scene load_steps=9 format=3 uid="uid://bwbs1hobpurtr"]
+
+[ext_resource type="Script" uid="uid://bbxrkcqxs8kfk" path="res://scripts/core/GameManager.gd" id="1_ixnqm"]
+[ext_resource type="Script" uid="uid://dnhcor51wqau2" path="res://scripts/core/BattleManager.gd" id="2_ixnqm"]
+[ext_resource type="Script" uid="uid://byrd7ge81tuj4" path="res://scripts/core/GridSystem.gd" id="3_ixnqm"]
+[ext_resource type="Script" uid="uid://yfpjuhxelsn" path="res://scripts/core/UnitManager.gd" id="4_ixnqm"]
+[ext_resource type="Script" uid="uid://dynbq4x41marc" path="res://scripts/core/InputController.gd" id="5_ixnqm"]
+[ext_resource type="Script" uid="uid://dsxstcp7c8qda" path="res://scripts/ui/BattleUI.gd" id="6_ixnqm"]
+[ext_resource type="Script" uid="uid://bnlgh7bo3er44" path="res://scripts/ui/GridCursor.gd" id="7_ixnqm"]
+[ext_resource type="Script" uid="uid://dmhlbkeug0xs5" path="res://scripts/core/MapLoader.gd" id="8_ixnqm"]
+
+[node name="Main" type="Node2D"]
+
+[node name="GameManager" type="Node" parent="."]
+script = ExtResource("1_ixnqm")
+
+[node name="BattleManager" type="Node" parent="GameManager"]
+script = ExtResource("2_ixnqm")
+
+[node name="GridSystem" type="Node2D" parent="GameManager"]
+script = ExtResource("3_ixnqm")
+
+[node name="UnitManager" type="Node" parent="GameManager"]
+script = ExtResource("4_ixnqm")
+
+[node name="InputController" type="Node" parent="GameManager"]
+script = ExtResource("5_ixnqm")
+
+[node name="MapLoader" type="Node" parent="GameManager"]
+script = ExtResource("8_ixnqm")
+
+[node name="BattleUI" type="CanvasLayer" parent="."]
+script = ExtResource("6_ixnqm")
+
+[node name="UnitInfoPanel" type="Panel" parent="BattleUI"]
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 210.0
+offset_bottom = 150.0
+
+[node name="UnitInfo" type="VBoxContainer" parent="BattleUI/UnitInfoPanel"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 190.0
+offset_bottom = 70.0
+
+[node name="Name" type="Label" parent="BattleUI/UnitInfoPanel/UnitInfo"]
+layout_mode = 2
+text = "Unit Name"
+
+[node name="Class" type="Label" parent="BattleUI/UnitInfoPanel/UnitInfo"]
+layout_mode = 2
+text = "Class"
+
+[node name="Level" type="Label" parent="BattleUI/UnitInfoPanel/UnitInfo"]
+layout_mode = 2
+text = "Lv. 1"
+
+[node name="HP" type="Label" parent="BattleUI/UnitInfoPanel/UnitInfo"]
+layout_mode = 2
+text = "HP: 20/20"
+
+[node name="Stats" type="GridContainer" parent="BattleUI/UnitInfoPanel"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 80.0
+offset_right = 190.0
+offset_bottom = 140.0
+columns = 2
+
+[node name="Attack" type="Label" parent="BattleUI/UnitInfoPanel/Stats"]
+layout_mode = 2
+text = "ATK: 5"
+
+[node name="Defense" type="Label" parent="BattleUI/UnitInfoPanel/Stats"]
+layout_mode = 2
+text = "DEF: 3"
+
+[node name="Magic" type="Label" parent="BattleUI/UnitInfoPanel/Stats"]
+layout_mode = 2
+text = "MAG: 2"
+
+[node name="Resistance" type="Label" parent="BattleUI/UnitInfoPanel/Stats"]
+layout_mode = 2
+text = "RES: 2"
+
+[node name="Speed" type="Label" parent="BattleUI/UnitInfoPanel/Stats"]
+layout_mode = 2
+text = "SPD: 5"
+
+[node name="Movement" type="Label" parent="BattleUI/UnitInfoPanel/Stats"]
+layout_mode = 2
+text = "MOV: 5"
+
+[node name="ActionMenu" type="VBoxContainer" parent="BattleUI"]
+offset_left = 220.0
+offset_top = 10.0
+offset_right = 320.0
+offset_bottom = 150.0
+
+[node name="CombatForecast" type="Panel" parent="BattleUI"]
+offset_left = 330.0
+offset_top = 10.0
+offset_right = 630.0
+offset_bottom = 150.0
+
+[node name="AttackerInfo" type="VBoxContainer" parent="BattleUI/CombatForecast"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 140.0
+offset_bottom = 130.0
+
+[node name="Name" type="Label" parent="BattleUI/CombatForecast/AttackerInfo"]
+layout_mode = 2
+text = "Attacker"
+
+[node name="HP" type="Label" parent="BattleUI/CombatForecast/AttackerInfo"]
+layout_mode = 2
+text = "HP: 20/20"
+
+[node name="Damage" type="Label" parent="BattleUI/CombatForecast/AttackerInfo"]
+layout_mode = 2
+text = "DMG: 5"
+
+[node name="Hit" type="Label" parent="BattleUI/CombatForecast/AttackerInfo"]
+layout_mode = 2
+text = "HIT: 85%"
+
+[node name="Crit" type="Label" parent="BattleUI/CombatForecast/AttackerInfo"]
+layout_mode = 2
+text = "CRIT: 5%"
+
+[node name="VSLabel" type="Label" parent="BattleUI/CombatForecast"]
+layout_mode = 0
+offset_left = 150.0
+offset_top = 60.0
+offset_right = 170.0
+offset_bottom = 86.0
+text = "VS"
+
+[node name="DefenderInfo" type="VBoxContainer" parent="BattleUI/CombatForecast"]
+layout_mode = 0
+offset_left = 180.0
+offset_top = 10.0
+offset_right = 290.0
+offset_bottom = 130.0
+
+[node name="Name" type="Label" parent="BattleUI/CombatForecast/DefenderInfo"]
+layout_mode = 2
+text = "Defender"
+
+[node name="HP" type="Label" parent="BattleUI/CombatForecast/DefenderInfo"]
+layout_mode = 2
+text = "HP: 20/20"
+
+[node name="Damage" type="Label" parent="BattleUI/CombatForecast/DefenderInfo"]
+layout_mode = 2
+text = "DMG: 3"
+
+[node name="Hit" type="Label" parent="BattleUI/CombatForecast/DefenderInfo"]
+layout_mode = 2
+text = "HIT: 75%"
+
+[node name="Crit" type="Label" parent="BattleUI/CombatForecast/DefenderInfo"]
+layout_mode = 2
+text = "CRIT: 0%"
+
+[node name="TurnIndicator" type="Label" parent="BattleUI"]
+offset_left = 10.0
+offset_top = 160.0
+offset_right = 210.0
+offset_bottom = 186.0
+text = "Player Phase"
+
+[node name="Units" type="Node2D" parent="."]
+
+[node name="Terrain" type="Node2D" parent="."]
+
+[node name="GridCursor" type="Node2D" parent="."]
+script = ExtResource("7_ixnqm")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(574, 321)
